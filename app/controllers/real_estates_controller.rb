@@ -7,7 +7,7 @@ class RealEstatesController < ApplicationController
 
   def new
     @real = RealEstate.new
-    @real.nearest_stations.new
+    2.times { @real.nearest_stations.new }
   end
 
   def show
