@@ -1,23 +1,38 @@
-= form_with(model: real, local: true) do |form|
-  = form.label "物件名"
-  = form.text_field :real_estate_name
-  = form.label "賃料"
-  = form.number_field :rent
-  | 円
-  = form.label "住所"
-  = form.text_field :address
-  = form.label "築年数"
-  = form.number_field :age
-  = form.label "備考"
-  = form.text_area :remarks
+h1 登録
 
-  br
-  = form.fields_for :nearest_stations do |near|
-    = near.label "路線名"
-    = near.text_field :route_name
-    = near.label "駅名"
-    = near.text_field :station_name
-    = near.label "徒歩分数"
-    = near.number_field :minutes_on_foot
-    br
-  = form.submit
+form
+  = form_with(model: real, local: true) do |form|
+    .form-group
+      = form.label "物件名"
+      = form.text_field :real_estate_name
+    .form-group
+      = form.label "賃料　"
+      = form.number_field :rent
+      | 円
+    .form-group
+      = form.label "住所　"
+      = form.text_field :address
+    .form-group
+      = form.label "築年数"
+      = form.number_field :age
+      | 年
+    .form-group
+      = form.label "備考　"
+      = form.text_area :remarks, size: "50x3"
+
+      p.under.mt-3.mb-4
+
+      = form.fields_for :nearest_stations do |near|
+        h5 最寄り駅
+        .form-group
+          = near.label "路線名　"
+          = near.text_field :route_name
+        .form-group
+          = near.label "駅名　　"
+          = near.text_field :station_name
+        .form-group
+          = near.label "徒歩分数"
+          = near.number_field :minutes_on_foot
+        p.under
+      
+    = form.submit class: "btn btn-primary"
