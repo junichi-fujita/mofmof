@@ -22,6 +22,8 @@ class RealEstatesController < ApplicationController
     @real = RealEstate.new(real_estate_params)
     if @real.save
       redirect_to real_estate_path(@real), notice: "物件を登録しました。"
+    else
+      render "new"
     end
   end
 
