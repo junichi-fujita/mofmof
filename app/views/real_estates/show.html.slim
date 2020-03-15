@@ -1,0 +1,30 @@
+h1 閲覧
+
+table.table
+  tr
+    th 物件名
+    td = @real.real_estate_name
+  tr
+    th 賃料
+    td = @real.rent
+  tr
+    th 住所
+    td = @real.address
+  tr
+    th 築年数
+    td = @real.age
+  tr
+    th 備考
+    td = @real.remarks
+
+- @real.nearest_stations.each_with_index do |near, i|
+  h4 最寄り駅 #{i+1}
+  = near.route_name
+  = near.station_name
+  = near.minutes_on_foot
+  | 分
+
+br
+= link_to "編集", edit_real_estate_path(@real)
+|  |
+= link_to "戻る", :back

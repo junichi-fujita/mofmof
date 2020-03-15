@@ -2,11 +2,11 @@ class RealEstatesController < ApplicationController
   before_action :set_real_estate, only: [:show, :edit, :update, :destroy]
 
   def index
-    @real = Real_estate.all
+    @reals = RealEstate.all
   end
 
   def new
-    @real = Real_estate.new
+    @real = RealEstate.new
     @real.nearest_stations.new
   end
 
@@ -19,7 +19,7 @@ class RealEstatesController < ApplicationController
   end
 
   def create
-    @real = Real_estate.new(real_estate_params)
+    @real = RealEstate.new(real_estate_params)
     if @real.save
       redirect_to real_estate_path(@real), notice: "物件を登録しました。"
     end
@@ -41,17 +41,17 @@ class RealEstatesController < ApplicationController
   private
 
   def set_real_estate
-    @real = Real_estate.find(params[:id])
+    @real = RealEstate.find(params[:id])
   end
 
   def real_estate_params
-    params.require(:real).permit(
+    params.require(:real_estate).permit(
       :real_estate_name,
       :rent,
       :address,
       :age,
       :remarks,
-      order_details_attributes: [
+      nearest_stations_attributes: [
         :id,
         :route_name,
         :station_name,
