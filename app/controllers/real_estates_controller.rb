@@ -23,6 +23,7 @@ class RealEstatesController < ApplicationController
     if @real.save
       redirect_to real_estate_path(@real), notice: "物件を登録しました。"
     else
+      2.times { @real.nearest_stations.new }
       render "new"
     end
   end
@@ -31,6 +32,7 @@ class RealEstatesController < ApplicationController
     if @real.update(real_estate_params)
       redirect_to real_estate_path(@real), notice: "物件を変更しました。"
     else
+      @real.nearest_stations.new
       render "edit"
     end
   end
