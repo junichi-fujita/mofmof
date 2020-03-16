@@ -1,0 +1,46 @@
+h1 物件一覧
+
+table.table.mt-3
+  thead.table-dark
+      tr
+        th 物件名
+        th 賃料
+        th 住所
+        th 築年数
+        th 備考
+        th
+        th
+        th
+  - @reals.each do |real|
+    tbody
+      tr.mt-5
+        td = real.real_estate_name
+        td 
+          = real.rent
+          | 円
+        td = real.address
+        td 
+          = real.age
+          | 年
+        td = real.remarks
+        td = link_to "詳細", real_estate_path(real)
+        td = link_to "編集", edit_real_estate_path(real) 
+        td = link_to "削除", real_estate_path(real), method: :delete, data: { confirm: "削除してもいいですか？" }
+
+
+/ br
+/ table.table
+/   - @reals.each do |real|
+/     - real.nearest_stations.each do |near|
+/       tr
+/         th 路線名：
+/         td = near.route_name
+/       tr
+/         th 駅名
+/         td = near.station_name
+/       tr
+/         th 徒歩分数
+/         td = near.minutes_on_foot
+/           | 分
+
+= link_to "物件を登録する", new_real_estate_path, class: "btn btn-primary"
