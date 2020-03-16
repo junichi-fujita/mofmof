@@ -18,7 +18,7 @@ gem 'html2slim'
 gem 'bootstrap'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+ 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'annotate'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'rails-i18n'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
